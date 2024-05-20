@@ -1,0 +1,16 @@
+<h1 class="ui center aligned header">Search for KWM-Lists</h1>
+<div class="ui search" [ngClass]="{loading: isLoading }">
+  <div class="ui icon input">
+    <input (keyup)="keyup.emit(searchTerm.value)" #searchTerm class="prompt" type="text" placeholder="Search for KWM-Lists...">
+    <i class="search icon"></i>
+  </div>
+  <div class="results transition" [ngClass]="{visible: foundKwmLists.length}">
+    @for (kwmlist of foundKwmLists; track kwmlist) {
+      <a href (click)="kwmlistSelected.emit(kwmlist); false" class="result">
+        <div class="content">
+          <div class="title">{{ kwmlist.listName }}</div>
+        </div>
+      </a>
+    }
+  </div>
+</div>

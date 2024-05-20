@@ -1,0 +1,30 @@
+<div class="ui container">
+  <!-- Header with Icon -->
+  <div class="ui segment">
+    <h2 class="ui header">
+      <i class="list icon"></i>
+      <div class="content">
+        {{ kwmlist?.listName }}
+        <div class="sub header">List Details</div>
+      </div>
+    </h2>
+  </div>
+
+  <!-- Date Information -->
+  <div class="ui divided grid">
+    <div class="row">
+      <div class="eight wide column">
+        <div class="ui label">
+          <i class="calendar plus icon"></i>
+          Created: {{ kwmlist?.created_at | date:'mediumDate' }}
+        </div>
+      </div>
+      <div class="eight wide column">
+        <div class="ui label">
+          <i class="calendar check icon"></i>
+          Updated: {{ kwmlist?.updated_at | date:'mediumDate' }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

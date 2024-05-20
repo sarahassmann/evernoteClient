@@ -1,0 +1,20 @@
+
+<div class="ui container">
+  <h1 class="ui dividing header">Tag Formular</h1>
+  <form class="ui large form segment" [formGroup]="kwmtagForm" (ngSubmit)="submitForm()">
+    <input type="hidden" formControlName="id">
+
+    <div class="field" [class.error]="errors['tagName']">
+      <label>Tag Name</label>
+      <input type="text" formControlName="tagName" placeholder="Enter the tag name">
+      @if (errors['tagName']){
+        <div class="ui pointing red basic label">{{ errors['tagName'] }}</div>
+      }
+    </div>
+
+    <input type="hidden" formControlName="created_at">
+    <input type="hidden" formControlName="updated_at">
+
+    <button class="ui primary button" type="submit" [disabled]="kwmtagForm.invalid">Save</button>
+  </form>
+</div>

@@ -1,0 +1,50 @@
+<div class="ui container">
+  <!-- Note Details Section -->
+  <div class="ui stackable grid">
+    <div class="twelve wide column">
+      <h1 class="ui header">{{ kwmtodo.todoName }}</h1>
+      <div class="ui divider"></div>
+    </div>
+    <!-- Note Description -->
+    <div class="eight wide column">
+      <h4 class="ui header">ToDo Description:</h4>
+      <p>{{ kwmtodo.todoDescription }}</p>
+    </div>
+    <!-- KWM-Lists and Notes ID -->
+    <div class="four wide column">
+      <h4 class="ui header">KWM-Lists ID:</h4>
+      <p>{{ kwmtodo.kwmlists_id }}</p>
+    </div>
+    <div class="four wide column">
+      <h4 class="ui header">KWM-Notes ID:</h4>
+      <p>{{ kwmtodo.kwmnotes_id }}</p>
+    </div>
+    <!-- Note Timing Information -->
+    <div class="four wide column">
+      <h4 class="ui header">Created at:</h4>
+      <p>{{ kwmtodo.created_at | date:'fullDate' }}</p>
+    </div>
+    <div class="four wide column">
+      <h4 class="ui header">Updated at:</h4>
+      <p>{{ kwmtodo.updated_at | date:'fullDate' }}</p>
+    </div>
+    <div class="four wide column">
+      <h4 class="ui header">Due at:</h4>
+      <p>{{ kwmtodo.due_date | date:'fullDate' }}</p>
+    </div>
+  </div>
+</div>
+<!-- Action Buttons -->
+<div class="ui container text-right">
+  <button [routerLink]="'/kwmtodos'" class="ui red button">Back to KWM-ToDos</button>
+  @if (authService.isLoggedIn()) {
+    <div class="ui small buttons">
+      <button class="ui red labeled icon button" (click)="removeKwmtodos()">
+        <i class="trash icon"></i>Delete KWM-ToDo
+      </button>
+      <a class="ui yellow labeled icon button" [routerLink]="['/todoForm', kwmtodo.id]">
+        <i class="edit icon"></i>Edit KWN-ToDo
+      </a>
+    </div>
+  }
+</div>

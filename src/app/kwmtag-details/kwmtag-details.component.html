@@ -1,0 +1,36 @@
+<div class="ui container">
+  <!-- Tag Data Section -->
+  <div class="ui stackable grid">
+    <!-- Header and Divider -->
+    <div class="sixteen wide column">
+      <h1 class="ui header">{{ kwmtag.tagName }}</h1>
+      <div class="ui divider"></div>
+    </div>
+    <!-- Creation Time -->
+    <div class="eight wide column">
+      <h4 class="ui header">Created at:</h4>
+      <p>{{ kwmtag.created_at | date:'medium' }}</p>
+    </div>
+    <!-- Update Time -->
+    <div class="eight wide column">
+      <h4 class="ui header">Updated at:</h4>
+      <p>{{ kwmtag.updated_at | date:'medium' }}</p>
+    </div>
+  </div>
+  <!-- Buttons for actions -->
+  <div class="ui grid">
+    <div class="sixteen wide column">
+      <button [routerLink]="'/kwmtags'" class="ui red button">Back to KWM-Tags</button>
+      @if (authService.isLoggedIn()) {
+        <div class="ui buttons">
+          <button class="ui red labeled icon button" (click)="removeKwmtags()">
+            <i class="trash icon"></i>Delete KWM-Tag
+          </button>
+          <a class="ui yellow labeled icon button" [routerLink]="['/tagForm', kwmtag.id]">
+            <i class="edit icon"></i>Edit KWM-Tag
+          </a>
+        </div>
+      }
+    </div>
+  </div>
+</div>

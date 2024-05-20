@@ -1,0 +1,54 @@
+<style>
+  .ui.container.header-container {
+    background-color: #f4f4f4; /* subtle background for the header area */
+    padding: 20px 0;
+    margin-bottom: 20px; /* space between header and content */
+  }
+
+  .ui.header {
+    font-size: 2.5em; /* larger font size for the title */
+    color: #4183c4; /* distinct color for the header */
+    padding-bottom: 10px; /* space below the header */
+  }
+
+  .ui.button {
+    margin-top: 10px; /* additional space above the buttons */
+    margin-bottom: 20px;
+    background-color: #4183c4; /* matching the header color */
+    color: white; /* white text on colored buttons */
+    transition: background-color 0.3s, transform 0.3s; /* smooth transitions for hover effects */
+  }
+
+  .ui.button:hover {
+    background-color: #245891; /* darker shade for hover effect */
+    transform: scale(1.05); /* slightly larger on hover */
+  }
+
+  .ui.center.aligned.container {
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0; /* subtle division from header */
+    margin-top: 20px;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .ui.header {
+      font-size: 2em; /* slightly smaller title for mobile */
+    }
+    .ui.button {
+      width: 100%; /* full width buttons for easier mobile access */
+    }
+  }
+</style>
+
+<div class="ui container header-container">
+  <h1 class="ui center aligned header">Home</h1>
+</div>
+<div class="ui center aligned container">
+  <a routerLink="/kwmlists" class="ui red button">See KWM-Lists</a>
+  <a routerLink="/kwmnotes" class="ui red button">See KWM-Notes</a>
+  <a routerLink="/kwmtags" class="ui red button">See KWM-Tags</a>
+  <a routerLink="/kwmtodos" class="ui red button">See KWM-ToDos</a>
+  <ev-search class="column" (kwmlistSelected)="kwmlistSelected($event)"></ev-search>
+</div>
+

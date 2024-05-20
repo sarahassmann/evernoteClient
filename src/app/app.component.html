@@ -1,0 +1,92 @@
+<!-- style app component -->
+<style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f9f9f9;
+  }
+
+  .ui.inverted.vertical.footer.segment {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 20px 0; /* Etwas mehr Polsterung für den Inhalt des Footers */
+    text-align: center;
+    z-index: 1000;
+  }
+
+  .content-wrap {
+    padding-bottom: 80px; /* Erhöhe diesen Wert, falls der Footer höher ist */
+  }
+
+  .ui.menu {
+    background-color: #4183c4;
+    border-radius: 0;
+    border: none;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.1);
+  }
+
+  .ui.menu .item {
+    color: white;
+    font-size: 1.1em;
+  }
+
+  .ui.menu .item:hover, .ui.menu .item.active {
+    background-color: #245891;
+  }
+
+  @media (max-width: 768px) {
+    .ui.menu {
+      display: flex;
+      flex-direction: column;
+      padding-left: 0;
+    }
+
+    .ui.menu .item {
+      text-align: left;
+      padding: 10px 15px;
+    }
+  }
+</style>
+
+
+<div class="content-wrap">
+  <!-- Tabs Menu Component -->
+  <div class="ui {{isLoggedIn() ? 'ten' : 'nine'}} item tabs menu">
+    <a routerLink="home" routerLinkActive="active" class="item">Home</a>
+    <a routerLink="kwmlists" routerLinkActive="active" class="item">KWM-Lists</a>
+    <a routerLink="kwmnotes" routerLinkActive="active" class="item">KWM-Notes</a>
+    <a routerLink="kwmtags" routerLinkActive="active" class="item">KWM-Tags</a>
+    <a routerLink="kwmtodos" routerLinkActive="active" class="item">KWM-Todos</a>
+    <!-- Admin Menu -->
+    @if (isLoggedIn()) {
+      <a routerLink="admin" routerLinkActive="active" class="item">Administration</a>
+      <a routerLink="noteForm" routerLinkActive="active" class="item">Note Formular</a>
+      <a routerLink="tagForm" routerLinkActive="active" class="item">Tag Formular</a>
+      <a routerLink="todoForm" routerLinkActive="active" class="item">ToDo Formular</a>
+    }
+    <a routerLink="login" routerLinkActive="active" class="item">{{ getLoginLabel() }}</a>
+  </div>
+</div>
+<!-- Footer Component -->
+<div class="ui inverted vertical footer segment">
+  <div class="ui container">
+    Evernote 24. <br>
+    By Sarah Assmann. <br>
+    Copyright © 2024
+  </div>
+</div>
+<!-- Router Outlet Component -->
+<div class="ui bottom attached segment">
+  <router-outlet></router-outlet>
+</div>
+
+
+
+
+
+

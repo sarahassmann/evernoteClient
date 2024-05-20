@@ -1,0 +1,10 @@
+<div class="ui container header-container">
+  <div class="ui huge header centered">
+    KWM-Evernote 2024 by Sarah Assmann
+  </div>
+</div>
+<div class="ui middle aligned selection divided list">
+  @for (kwmnote of kwmnotes; track kwmnote) {
+    <a class="item ev-kwmnote-item" [kwmnote]="kwmnote" [routerLink]="['/kwmnotes', kwmnote.id]"></a>
+  }
+</div>

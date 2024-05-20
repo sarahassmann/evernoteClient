@@ -1,0 +1,35 @@
+<div class="ui container">
+  <div class="ui very padded segment">
+    <h1 class="ui header">{{ kwmlist.listName }}</h1>
+    <div class="ui divider"></div>
+    <div class="ui three column stackable grid">
+      <!-- User ID -->
+      <div class="column">
+        <h4 class="ui header">User ID:</h4>
+        <p>{{ kwmlist.user_id }}</p>
+      </div>
+      <!-- Created at -->
+      <div class="column">
+        <h4 class="ui header">Created at:</h4>
+        <p>{{ kwmlist.created_at | date: 'mediumDate' }}</p>
+      </div>
+      <!-- Updated at -->
+      <div class="column">
+        <h4 class="ui header">Updated at:</h4>
+        <p>{{ kwmlist.updated_at | date: 'mediumDate' }}</p>
+      </div>
+    </div>
+    <!-- Buttons -->
+    <div class="ui buttons">
+      <button [routerLink]="'/kwmlists'" class="ui red button">Back to Kwm-Lists</button>
+      @if (authService.isLoggedIn()) {
+        <button class="ui red labeled icon button" (click)="removeKwmlist()">
+          <i class="trash icon"></i>Delete Kwm-List
+        </button>
+        <a class="ui yellow labeled icon button" [routerLink]="['/admin', kwmlist.id]">
+          <i class="edit icon"></i>Edit KWM-List
+        </a>
+      }
+    </div>
+  </div>
+</div>

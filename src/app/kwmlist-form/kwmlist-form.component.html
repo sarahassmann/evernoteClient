@@ -1,0 +1,27 @@
+<div class="ui container">
+  <h1 class="ui dividing header">KWM-List Formular</h1>
+  <form class="ui large form" [formGroup]="kwmListForm" (ngSubmit)="submitForm()">
+    <input type="hidden" formControlName="id">
+
+    <div class="field" [class.disabled]="isUpdatingKwmlist">
+      <label>List Name</label>
+      <input type="text" formControlName="listName" placeholder="Enter list name">
+      @if (errors['listName']){
+        <div class="ui error message">{{ errors['listName'] }}</div>
+      }
+    </div>
+
+    <div class="field">
+      <label>User</label>
+      <select formControlName="user_id" class="ui fluid dropdown">
+        <option value="">Select User</option>
+        <option *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
+      </select>
+    </div>
+
+    <input type="hidden" formControlName="created_at">
+    <input type="hidden" formControlName="updated_at">
+
+    <button class="ui primary button" type="submit" [disabled]="kwmListForm.invalid">Save</button>
+  </form>
+</div>

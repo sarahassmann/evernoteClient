@@ -1,0 +1,44 @@
+<div class="ui container">
+  <h1 class="ui dividing header">ToDo Formular</h1>
+  <form class="ui large form segment" [formGroup]="kwmtodoForm" (ngSubmit)="submitForm()">
+    <input type="hidden" formControlName="id">
+
+    <div class="field" [class.error]="errors['todoName']">
+      <label>ToDo Title</label>
+      <input type="text" formControlName="todoName" placeholder="Enter ToDo title">
+      @if (errors['todoName']){
+        <div class="ui pointing red basic label">{{ errors['todoName'] }}</div>
+      }
+    </div>
+
+    <div class="field" [class.error]="errors['todoDescription']">
+      <label>ToDo description</label>
+      <textarea formControlName="todoDescription" placeholder="Describe the ToDo..."></textarea>
+      @if (errors['todoDescription']){
+        <div class="ui pointing red basic label">{{ errors['todoDescription'] }}</div>
+      }
+    </div>
+
+    <div class="field">
+      <label for="kwmListDropdown">KWM-Lists</label>
+      <select formControlName="kwmlists_id" id="kwmListDropdown" class="ui fluid dropdown">
+        <option value="">Select KWM-List</option>
+        <option *ngFor="let kwmlist of kwmlists" [value]="kwmlist.id">{{ kwmlist.listName }}</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="kwmNoteDropdown">Notes</label>
+      <select formControlName="kwmnotes_id" id="kwmNoteDropdown" class="ui fluid dropdown">
+        <option value="">Select KWM-Notes</option>
+        <option *ngFor="let kwmnote of kwmnotes" [value]="kwmnote.id">{{ kwmnote.noteTitle }}</option>
+      </select>
+    </div>
+
+    <input type="hidden" formControlName="created_at">
+    <input type="hidden" formControlName="updated_at">
+    <input type="hidden" formControlName="due_date">
+
+    <button class="ui primary large fluid button" type="submit" [disabled]="kwmtodoForm.invalid">Save</button>
+  </form>
+</div>

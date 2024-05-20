@@ -1,0 +1,42 @@
+<div class="ui container">
+  <div class="ui stackable grid">
+    <!-- Main Note Information -->
+    <div class="sixteen wide column">
+      <h1 class="ui header">{{ kwmnote.noteTitle }}</h1>
+      <div class="ui divider"></div>
+    </div>
+
+    <!-- Note Description and ID -->
+    <div class="twelve wide column">
+      <h4 class="ui header">Note Description:</h4>
+      <p>{{ kwmnote.noteDescription }}</p>
+    </div>
+
+    <!-- List ID and Timestamps -->
+    <div class="four wide column">
+      <h4 class="ui header">KWM-Lists ID:</h4>
+      <p>{{ kwmnote.kwmlists_id }}</p>
+
+      <h4 class="ui header">Created at:</h4>
+      <p>{{ kwmnote.created_at | date:'medium' }}</p>
+
+      <h4 class="ui header">Updated at:</h4>
+      <p>{{ kwmnote.updated_at | date:'medium' }}</p>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="sixteen wide column">
+      <div class="ui fluid buttons">
+        <button [routerLink]="'/kwmnotes'" class="ui red button">Back to KWM-Notes</button>
+        <button *ngIf="authService.isLoggedIn()" class="ui red labeled icon button" (click)="removeKwmnotes()">
+          <i class="trash icon"></i>
+          Delete KWM-Note
+        </button>
+        <a *ngIf="authService.isLoggedIn()" class="ui yellow labeled icon button" [routerLink]="['/noteForm', kwmnote.id]">
+          <i class="edit icon"></i>
+          Edit KWM-Note
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

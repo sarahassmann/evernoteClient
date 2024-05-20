@@ -1,0 +1,38 @@
+<div class="ui container">
+  <h1 class="ui center aligned icon header">
+    <i class="note icon"></i>  <!-- You can choose an appropriate icon -->
+    Note Formular
+  </h1>
+  <form class="ui large form segment" [formGroup]="kwmnoteForm" (ngSubmit)="submitForm()">
+    <input type="hidden" formControlName="id">
+
+    <div class="field" [class.error]="errors['noteTitle']">
+      <label>Note Title</label>
+      <input type="text" formControlName="noteTitle" placeholder="Enter the note title">
+      <div *ngIf="errors['noteTitle']" class="ui pointing red basic label">
+        {{ errors['noteTitle'] }}
+      </div>
+    </div>
+
+    <div class="field" [class.error]="errors['noteDescription']">
+      <label>Note description</label>
+      <textarea formControlName="noteDescription" placeholder="Describe the note..."></textarea>
+      <div *ngIf="errors['noteDescription']" class="ui pointing red basic label">
+        {{ errors['noteDescription'] }}
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="kwmListDropdown">KWM-Lists</label>
+      <select formControlName="kwmlists_id" id="kwmListDropdown" class="ui fluid dropdown">
+        <option value="">Select KWM-List</option>
+        <option *ngFor="let kwmlist of kwmlists" [value]="kwmlist.id">{{ kwmlist.listName }}</option>
+      </select>
+    </div>
+
+    <input type="hidden" formControlName="created_at">
+    <input type="hidden" formControlName="updated_at">
+
+    <button class="ui primary large fluid button" type="submit" [disabled]="kwmnoteForm.invalid">Save</button>
+  </form>
+</div>
